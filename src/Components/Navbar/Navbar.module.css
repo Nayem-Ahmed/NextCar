@@ -1,0 +1,71 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.navlink ul {
+    display: flex;
+    gap: 10px;
+}
+
+.navlink ul li a {}
+
+.appointmentButton {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.menuIcon {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+@media(max-width: 768px) {
+    .menuIcon {
+        display: block;
+        visibility: visible;
+    }
+
+    .navlink {
+        display: none;
+        /* Hide nav links initially */
+        flex-direction: column;
+        justify-content: space-between;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+        margin: auto;
+        background-color: white;
+    }
+    .showMenu{
+        display: flex;
+    }
+    .navlink ul {
+        flex-direction: column;
+        /* Stack nav items vertically */
+        margin: auto;
+
+
+    }
+
+    .navlink li {
+
+        text-align: center;
+        /* Center text for nav items */
+        padding: 0.5rem;
+        margin: auto;
+        justify-content: center;
+        display: flex;
+        margin-left: 0;
+        padding-left: 0;
+
+    }
+
+}
