@@ -13,6 +13,8 @@ const Navbar = () => {
         setMenuOpen(!menuOpen);
     };
     return (
+        <div className='container mx-auto p-2'>
+
         <div className={nav.navbar}>
             <div>
                 <Link href={`/`}>
@@ -39,6 +41,7 @@ const Navbar = () => {
                     {menuOpen ? <FaTimes /> : <FaBars />} {/* Hamburger icon */}
                 </div>
             </div>
+        </div>
         </div>
     );
 };

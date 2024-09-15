@@ -3,7 +3,7 @@ import React from 'react';
 
 const Aboutus = () => {
     return (
-        <div className='flex gap-5'>
+        <div className='flex gap-5 my-8 container mx-auto'>
             <div className='relative w-1/2'>
 
                 <Image

@@ -3,7 +3,9 @@ import React from 'react';
 
 const Banner = () => {
     return (
-        <div className="carousel w-full">
+        <div className='container mx-auto'>
+            
+        <div className="carousel w-full ">
             {
                 banner.map((b, index) => (
                     <div key={index} id={`slide${index + 1}`} className="carousel-item relative w-full">
@@ -32,6 +34,7 @@ const Banner = () => {
                     </div>
                 ))
             }
+        </div>
         </div>
     );
 };
