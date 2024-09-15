@@ -10,7 +10,7 @@ const Banner = () => {
                         <img
                             src={`/assets/images/banner/${index + 1}.jpg`}
                             alt={b.title}
-                            className="w-full object-cover h-[100vh] object-top opacity-70"
+                            className="w-full object-cover h-[100vh] object-top"
                         />
                         <div className="absolute right-10 bottom-14 flex gap-5 z-50">
                             <a href={b.prev} className="btn btn-circle">❮</a>
