@@ -3,7 +3,6 @@ import { services } from '../../lib/services'
 import Link from 'next/link';
 
 const Services = () => {
-    console.log(services);
     
     return (
         <div className='my-28 container mx-auto'>
@@ -15,7 +14,7 @@ const Services = () => {
 
             {
                 services.map((service) => (
-                    <div key={service.id} className="card card-compact bg-base-100   shadow-xl">
+                    <div key={service._id} className="card card-compact bg-base-100   shadow-xl">
                         <figure>
                             <img
                                 className='w-full h-48 object-cover'
