@@ -16,7 +16,6 @@ const SignupPage = () => {
         }
         console.log(newUser);
 
-
     };
     return (
         <div className='flex flex-col md:flex-row justify-center my-8 p-10'>
