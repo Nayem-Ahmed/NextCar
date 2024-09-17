@@ -14,7 +14,18 @@ const SignupPage = () => {
             password: event.target.password.value,
 
         }
-        console.log(newUser);
+        const res = await fetch('http://localhost:3000/signup/api', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify(newUser)
+        })
+        if (res.ok) {
+            event.target.reset(); // Clear the form after successful submission
+        } else {
+            console.error('Signup failed');
+        }
 
     };
     return (
@@ -33,6 +44,7 @@ const SignupPage = () => {
                     <input
                         type="text"
                         name="username"
+                        required
                         className="mb-4 p-2 border border-gray-300 rounded-md"
                         placeholder="Enter your username"
                     />
@@ -40,6 +52,7 @@ const SignupPage = () => {
                     <input
                         type="email"
                         name="email"
+                        required
                         className="mb-4 p-2 border border-gray-300 rounded-md"
                         placeholder="Enter your email"
                     />
@@ -47,6 +60,7 @@ const SignupPage = () => {
                     <input
                         type="password"
                         name="password"
+                        required
                         className="mb-6 p-2 border border-gray-300 rounded-md"
                         placeholder="Enter your password"
                     />

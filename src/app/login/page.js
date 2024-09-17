@@ -2,13 +2,28 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const loginpage = () => {
-    const handlesubmit = (e) => {
+    const router = useRouter()
+    const handlesubmit = async (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email, password);
+        const res = await signIn('credentials', {
+            email,
+            password,
+            redirect: false
+        });
+        console.log(res);
+        if (res.ok) {
+            router.push("/")
+            e.target.reset(); // Clear the form after successful submission
+        } else {
+            console.error('Signup failed');
+        }
+
 
     }
     return (
@@ -25,6 +40,7 @@ const loginpage = () => {
                 <form onSubmit={handlesubmit} className="flex flex-col p-5">
                     <label className="mb-2 text-gray-700">Email</label>
                     <input
+                        required
                         type="email"
                         name="email"
                         className="mb-4 p-2 border border-gray-300 rounded-md"
@@ -32,6 +48,7 @@ const loginpage = () => {
                     />
                     <label className="mb-2 text-gray-700">Password</label>
                     <input
+                        required
                         type="password"
                         name="password"
                         className="mb-6 p-2 border border-gray-300 rounded-md"

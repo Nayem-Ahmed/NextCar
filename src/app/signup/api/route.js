@@ -1,4 +1,5 @@
 import { mongodb } from "@/lib/mongodb";
+import bcrypt from "bcrypt";
 
 export const POST = async (request) => {
     try {
@@ -16,9 +17,10 @@ export const POST = async (request) => {
             // If user exists, return a conflict response
             return new Response(JSON.stringify({ error: 'User already exists' }), { status: 409 });
         }
+        const hash = bcrypt.hashSync(newUser.password, 14);
 
         // Insert the new user into the "users" collection
-        const result = await userCollection.insertOne(newUser);
+        const result = await userCollection.insertOne({...newUser, password: hash});
 
         // Return a JSON response indicating success
         return new Response(JSON.stringify({ message: 'User added', userId: result.insertedId }), { status: 201 });
