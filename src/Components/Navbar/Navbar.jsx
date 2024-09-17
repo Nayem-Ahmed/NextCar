@@ -11,8 +11,7 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false); // State to manage menu visibility
     const pathname = usePathname()
     const sessiion = useSession()
-    console.log(sessiion);
-
+ 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
@@ -40,10 +39,11 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className={nav.appointmentButton}>
-                    <button type='button' className='px-5 py-2 text-[#FF3811] border border-[#FF3811] font-semibold rounded-sm'>Appointment</button>
+                    {/* <button type='button' className='px-5 py-2 text-[#FF3811] border border-[#FF3811] font-semibold rounded-sm'>Appointment</button> */}
+                    <p>{sessiion?.data?.user?.name}</p>
                     {
                         sessiion.data ?
-                            <button onClick={()=>signOut()} className='bg-red-500 px-5 py-2 rounded-md text-white' type="button">Logout</button>
+                            <button onClick={() => signOut()} className='bg-red-500 px-5 py-2 rounded-md text-white' type="button">Logout</button>
                             :
                             <Link href={`/login`}>
                                 <button className='bg-red-500 px-5 py-2 rounded-md text-white' type="button">login</button>

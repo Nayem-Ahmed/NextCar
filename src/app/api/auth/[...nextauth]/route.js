@@ -31,7 +31,7 @@ const handler = NextAuth({
                 const mathedpassword = bcrypt.compareSync(password, currentuser.password);
                 if (!mathedpassword) {
                     return null
-                    
+
                 }
                 return currentuser;
             },
@@ -40,9 +40,40 @@ const handler = NextAuth({
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET
-          })
+        })
     ],
-    callbacks: {},
+    callbacks: {
+        async signIn({ user, account }) {
+            const db = await mongodb();
+
+            // Only handle Google logins
+            if (account.provider === 'google') {
+                const existingUser = await db.collection("users").findOne({ email: user.email });
+
+                // If user does not exist, create a new user
+                if (!existingUser) {
+                    const newUser = {
+                        username: user.name, // user contains the Google profile information
+                        email: user.email,
+                        image: user.image,
+                    };
+                    await db.collection("users").insertOne(newUser);
+                }
+            }
+
+            return true; // Allow the sign-in to proceed
+        },
+        // async session({ session, token }) {
+        //     session.user.id = token.id;
+        //     return session;
+        // },
+        // async jwt({ token, user }) {
+        //     if (user) {
+        //         token.id = user._id;
+        //     }
+        //     return token;
+        // }
+    },
     pages: {
         signIn: '/login'
     }

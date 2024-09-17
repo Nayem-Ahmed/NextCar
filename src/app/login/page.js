@@ -17,12 +17,11 @@ const loginpage = () => {
             password,
             redirect: false
         });
-        console.log(res);
-        if (res.ok) {
+         if (res.ok) {
             router.push("/")
             e.target.reset(); // Clear the form after successful submission
         } else {
-            console.error('Signup failed');
+            console.error('Login failed');
         }
 
 
