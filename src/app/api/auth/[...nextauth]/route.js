@@ -1,6 +1,8 @@
 import { mongodb } from "@/lib/mongodb";
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
+import GoogleProvider from "next-auth/providers/google";
+
 import bcrypt from "bcrypt";
 
 const handler = NextAuth({
@@ -35,6 +37,10 @@ const handler = NextAuth({
             },
 
         }),
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET
+          })
     ],
     callbacks: {},
     pages: {

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import Sociallogin from '@/Components/Sociallogin';
 
 const loginpage = () => {
     const router = useRouter()
@@ -61,7 +62,7 @@ const loginpage = () => {
                         Login
                     </button>
                     <i className='text-center'>or</i>
-                    <button className="btn no-animation">Google</button>
+                    <Sociallogin></Sociallogin>
                     <p>Have an account? <Link href={`/signup`} className='text-red-500'>Sign Up</Link></p>
                 </form>
 
