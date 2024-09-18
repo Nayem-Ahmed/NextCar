@@ -21,7 +21,7 @@ const Banner = () => {
                         {/* Overlay */}
                         <div className="absolute inset-0 bg-black bg-opacity-50"></div> {/* Semi-transparent overlay */}
                         {/* Text Content */}
-                        <div className="absolute max-w-xl mb-4 top-1/2 left-5 transform -translate-y-1/2 text-white z-10">
+                        <div className="absolute max-w-xl mb-4 top-1/2 left-5 p-10 transform -translate-y-1/2 text-white z-10">
                             <h1 className="text-4xl font-bold mb-2">{b.title}</h1>
                             <h2 className="text-md">{b.subtitle}</h2>
                             <div className='flex gap-5 mt-4'>
