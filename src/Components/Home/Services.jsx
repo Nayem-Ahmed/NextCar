@@ -1,13 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
+import { getServices } from '@/services/getServices';
 
-
-const getServices = async () => {
-    let data = await fetch('http://localhost:3000/services/api/get-all')
-    let services = await data.json()
-    return services;
-
-}
 
 const Services = async () => {
     const services = await getServices();
@@ -33,7 +27,7 @@ const Services = async () => {
                                 <h2 className="card-title">{service.title}</h2>
                                 <p>$ {service.price}</p>
 
-                                <Link href={`/details/${service._id}`} className="card-actions justify-end">
+                                <Link href={`/services/${service._id}`} className="card-actions justify-end">
                                     <button className="btn btn-error">Details</button>
                                 </Link>
                             </div>
