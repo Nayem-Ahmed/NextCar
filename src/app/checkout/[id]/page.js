@@ -3,6 +3,7 @@ import { getServicesDetails } from '@/services/getServices';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const page = ({ params }) => {
     const { data } = useSession();
@@ -62,11 +63,18 @@ const page = ({ params }) => {
                 },
             })
             console.log(response);
-            
+
+            if (response.ok) {
+                toast.success("Booking confirmed!");  // Show success message
+                event.target.reset();  // Reset form fields
+            } else {
+                toast.error("Failed to confirm booking."); // Show error message
+            }
+
         } catch (error) {
             console.log(error);
-            
-            
+
+
         }
 
 
@@ -104,7 +112,7 @@ const page = ({ params }) => {
                             <label className="label">
                                 <span className="label-text">Date</span>
                             </label>
-                            <input defaultValue={new Date().getDate()} type="date" name="date" className="input input-bordered" />
+                            <input defaultValue={new Date().getDate()} required type="date" name="date" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">

@@ -4,7 +4,10 @@ import { getServices } from '@/services/getServices';
 
 
 const Services = async () => {
-    const services = await getServices();
+    const getservices = await getServices();
+
+    console.log(getservices.services);
+
 
     return (
         <div className='my-28 container mx-auto'>
@@ -15,7 +18,8 @@ const Services = async () => {
             <div className='grid gap-5 grid-cols-3 mt-8'>
 
                 {
-                    services?.map((service) => (
+                    
+                    getservices?.services?.map((service) => (
                         <div key={service._id} className="card card-compact bg-base-100   shadow-xl">
                             <figure>
                                 <img
@@ -34,6 +38,8 @@ const Services = async () => {
                         </div>
                     ))
                 }
+
+
             </div>
         </div>
     );

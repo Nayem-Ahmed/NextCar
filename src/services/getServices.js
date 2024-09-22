@@ -1,8 +1,8 @@
 // get all services data
 export const getServices = async () => {
     let data = await fetch('http://localhost:3000/services/api/get-all')
-    let services = await data.json()
-    return services;
+    let servicesData = await data.json();
+    return servicesData;
 
 }
 // get servicesDetails data

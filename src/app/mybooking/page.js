@@ -3,18 +3,17 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const page = () => {
     const session = useSession();
     const [bookings, setBookings] = useState([]);
-    console.log(bookings);
     useEffect(() => {
         const fetchData = async () => {
             try {
                 let data = await fetch(`http://localhost:3000/mybooking/api/${session?.data?.user?.email}`)
                 let posts = await data.json();
                 setBookings(posts?.bookings)
-
 
             } catch (error) {
                 console.log(error);
@@ -37,6 +36,7 @@ const page = () => {
                 console.log('Booking deleted:', data.message);
                 // Update the bookings state to remove the deleted booking
                 setBookings((prevBookings) => prevBookings.filter((booking) => booking._id !== id));
+                toast.success("delete");
             } else {
                 console.log('Error deleting booking:', data.error);
             }

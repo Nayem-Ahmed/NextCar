@@ -5,10 +5,9 @@ export const GET = async () => {
 
         const db = await mongodb();
         const services = await db.collection("services").find().toArray(); // Await the query
-        return Response.json(services);
-        
+        return Response.json({services});
     } catch (error) {
-        console.log(error);
+        console.error(error);
         return Response.json({ error: 'Failed to fetch services' });
 
 
