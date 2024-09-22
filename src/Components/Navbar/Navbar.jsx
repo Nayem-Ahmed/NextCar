@@ -34,7 +34,7 @@ const Navbar = () => {
                         <li><Link className={`${pathname === '/' && 'text-red-500'}`} href={`/`}>Home</Link></li>
                         <li><Link className={`${pathname === '/about' && 'text-red-500'}`} href={`/about`}>About</Link></li>
                         <li><Link className={`${pathname === '/services' && 'text-red-500'}`} href={`/services`}>Services</Link></li>
-                        <li><Link className={`${pathname === '/blog' && 'text-red-500'}`} href={`/blog`}>Blog</Link></li>
+                        <li><Link className={`${pathname === '/mybooking' && 'text-red-500'}`} href={`/mybooking`}>Booking</Link></li>
                         <li><Link className={`${pathname === '/contact' && 'text-red-500'}`} href={`/contact`}>Contact</Link></li>
                     </ul>
                 </div>
