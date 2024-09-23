@@ -45,6 +45,7 @@ const UpdateBookingPage = ({ params }) => {
 
             if (response.ok) {
                 toast.success("Booking updated successfully!");
+                event.target.reset();
 
             } else {
                 toast.error("Failed to update booking.");

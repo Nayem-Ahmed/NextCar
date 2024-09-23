@@ -1,4 +1,5 @@
 "use client";
+import Sociallogin from '@/Components/Sociallogin';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -71,7 +72,7 @@ const SignupPage = () => {
                         Sign Up
                     </button>
                     <i className='text-center my-2'>or</i>
-                    <button className="btn no-animation">Sign Up with Google</button>
+                    <Sociallogin />
                     <p>Already have an account? <Link href={`/login`} className='text-red-500'>Login</Link></p>
                 </form>
             </div>

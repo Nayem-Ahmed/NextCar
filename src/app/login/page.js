@@ -3,11 +3,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Sociallogin from '@/Components/Sociallogin';
 
 const loginpage = () => {
-    const router = useRouter()
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const path = searchParams.get("redirect");
+
     const handlesubmit = async (e) => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -15,10 +18,10 @@ const loginpage = () => {
         const res = await signIn('credentials', {
             email,
             password,
-            redirect: false
+            redirect: true,
+            callbackUrl: path ? path : "/",
         });
-         if (res.ok) {
-            router.push("/")
+        if (res.ok) {
             e.target.reset(); // Clear the form after successful submission
         } else {
             console.error('Login failed');
