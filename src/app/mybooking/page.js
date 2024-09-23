@@ -90,7 +90,7 @@ const page = () => {
                                     <td>{date}</td>
                                     <td>
                                         <div className="flex items-center space-x-3">
-                                            <Link href={`/mybookings/update/${_id}`}><button class="btn btn-sm">Edit</button></Link>
+                                            <Link href={`/mybooking/update/${_id}`}><button class="btn btn-sm">Edit</button></Link>
                                             <button
                                                 onClick={() => handleDelete(_id)}
                                                 class="btn btn-sm"
